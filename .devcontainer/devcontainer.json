@@ -1,0 +1,10 @@
+{
+  "name": "Ubuntu",
+  "image": "mcr.microsoft.com/devcontainers/base:jammy",
+  "features": {
+    "ghcr.io/devcontainers/features/hugo:1": {},
+    "ghcr.io/guiyomh/features/vim:0": {}
+  },
+  "postCreateCommand": "sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && sudo dpkg-reconfigure -f noninteractive tzdata",
+  "forwardPorts": [1313]
+}
