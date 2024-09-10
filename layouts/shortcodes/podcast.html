@@ -1,0 +1,50 @@
+<!--
+Parameters:
+    url - (Required) Podcast URL
+    show - (Required) Podcast show name
+    episode - (Required) Episode name
+    Alternatively, you can use positional parameters:
+    [0] - Podcast URL
+    [1] - Podcast show name
+    [2] - Episode name
+-->
+  
+<div class="podcast-wrapper">
+  {{ if .IsNamedParams }}
+  <a href="{{ .Get "url" }}" class="podcast-link" target="_blank">
+    <p class="podcast-title">{{ .Get "show" }}</p>
+    <p class="episode-title">{{ .Get "episode" }}</p>
+  </a>
+  {{ else }}
+  <a href="{{ .Get 0 }}" class="podcast-link" target="_blank">
+    <p class="podcast-title">{{ .Get 1 }}</p>
+    <p class="episode-title">{{ .Get 2 }}</p>
+  </a>
+  {{ end }}
+</div>
+
+<style>
+  .podcast-wrapper {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-left: 5px solid #2c3e50;
+  }
+  
+  .podcast-link {
+    text-decoration: none;
+    color: #3498db;
+  }
+  
+  .podcast-title {
+    font-size: 0.8em;
+    color: #2c3e50;
+    margin: 0;
+  }
+  
+  .episode-title {
+    font-size: 1.0em;
+    color: #1abc9c;
+    margin: 5px 0 0;
+  }
+</style>
