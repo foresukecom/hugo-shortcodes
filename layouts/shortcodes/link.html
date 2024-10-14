@@ -1,0 +1,54 @@
+<!--
+Parameters:
+    url - (Required) Link URL
+    title - (Required) Title or name of the link
+    description - (Optional) Additional description or subtitle
+    Alternatively, you can use positional parameters:
+    [0] - Link URL
+    [1] - Title
+    [2] - Description
+-->
+
+<div class="link-wrapper">
+  {{ if .IsNamedParams }}
+  <a href="{{ .Get "url" }}" class="link" target="_blank">
+    <p class="link-title">{{ .Get "title" }}</p>
+    {{ if .Get "description" }}
+    <p class="link-description">{{ .Get "description" }}</p>
+    {{ end }}
+  </a>
+  {{ else }}
+  <a href="{{ .Get 0 }}" class="link" target="_blank">
+    <p class="link-title">{{ .Get 1 }}</p>
+    {{ if .Get 2 }}
+    <p class="link-description">{{ .Get 2 }}</p>
+    {{ end }}
+  </a>
+  {{ end }}
+</div>
+
+<style>
+  .link-wrapper {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-left: 5px solid #333;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: #3498db;
+  }
+  
+  .link-title {
+    font-size: 1em;
+    color: #333;
+    margin: 0;
+  }
+  
+  .link-description {
+    font-size: 0.9em;
+    color: #777;
+    margin: 5px 0 0;
+  }
+</style>
